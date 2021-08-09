@@ -6,38 +6,44 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] List<Tile> path = new List<Tile>();
     [SerializeField] [Range(0f, 5f)]float speed = 1f;
 
+    List<Node> path = new List<Node>();
     Enemy enemy;
+    GridManager gridManager;
+    Pathfinder pathfinder;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        enemy = GetComponent<Enemy>();    
+        enemy = GetComponent<Enemy>();
+        gridManager = FindObjectOfType<GridManager>();
+        pathfinder = FindObjectOfType<Pathfinder>();
     }
     void OnEnable()
     {
-        FindPath();
+        this.transform.position = gridManager.GetPositionFromCoordinates(pathfinder.StartCoordinates); // returns to starting position
 
-        this.transform.position = path[0].transform.position; // returns to starting position
-        StartCoroutine(PrintTilessList());
+        RecalculatePath(true);
     }
 
-    void FindPath()
+    void RecalculatePath(bool resetPath)
     {
-        path.Clear();
-        GameObject parent = GameObject.FindGameObjectWithTag("Path");
-        
-        foreach(Transform child in parent.GetComponentsInChildren<Transform>())
-        {
-            Tile tile = child.GetComponent<Tile>();
+        Vector2Int coordinates = new Vector2Int();
 
-            if(tile != null)
-            {
-                path.Add(tile);
-            }
+        if (resetPath)
+        {
+            coordinates = pathfinder.StartCoordinates;
         }
+        else
+        {
+            coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
+        }
+
+        StopAllCoroutines();
+        path.Clear();
+        path = pathfinder.GetNewPath(coordinates);
+        StartCoroutine(FollowPath());
     }
     // Update is called once per frame
     void Update()
@@ -45,12 +51,12 @@ public class EnemyMover : MonoBehaviour
         
     }
 
-    IEnumerator PrintTilessList()
+    IEnumerator FollowPath()
     {
-        foreach(Tile tile in path)
+        for(int i = 1; i < path.Count; i++)
         {
             Vector3 startPos = this.transform.position;
-            Vector3 endPos = tile.transform.position;
+            Vector3 endPos = gridManager.GetPositionFromCoordinates(path[i].coordinates);
             float travelPercent = 0f;
 
             transform.LookAt(endPos); // for the enemy to look towards his end position;

@@ -6,7 +6,10 @@ using UnityEngine;
 public class Pathfinder : MonoBehaviour
 {
     [SerializeField] Vector2Int startCoordinates;
+    public Vector2Int StartCoordinates { get { return startCoordinates; } }
+
     [SerializeField] Vector2Int destinationCoordinates;
+    public Vector2Int DestinationCoordinates { get { return destinationCoordinates; } }
 
     Node startNode;
     Node destinationNode;
@@ -25,21 +28,34 @@ public class Pathfinder : MonoBehaviour
         if(gridManager != null)
         {
             grid = gridManager.Grid;
+            startNode = grid[startCoordinates];
+            destinationNode = grid[destinationCoordinates];
+            
         }
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        startNode = gridManager.Grid[startCoordinates];
-        destinationNode = gridManager.Grid[destinationCoordinates];
-
         GetNewPath();
     }
 
     public List<Node> GetNewPath()
     {
+        // this is so similar to the overloaded version
+        /*
         gridManager.ResetNodes();
-        BreadthFirstSearch();
+        BreadthFirstSearch(startCoordinates);
+        return BuildPath();
+        */
+        return GetNewPath(startCoordinates);
+    }
+
+    // Overloading GetNewPath();
+    public List<Node> GetNewPath(Vector2Int currCoords)
+    {
+        gridManager.ResetNodes();
+        BreadthFirstSearch(currCoords);
         return BuildPath();
     }
 
@@ -67,15 +83,18 @@ public class Pathfinder : MonoBehaviour
         }
     }
 
-    void BreadthFirstSearch()
+    void BreadthFirstSearch(Vector2Int currCoords)
     {
+        startNode.isWalkable = true;
+        destinationNode.isWalkable = true;
+
         frontier.Clear();
         reached.Clear();
 
         bool isRunning = true;
 
-        frontier.Enqueue(startNode);
-        reached.Add(startCoordinates, startNode);
+        frontier.Enqueue(grid[currCoords]);
+        reached.Add(currCoords, grid[currCoords]);
 
         while (frontier.Count > 0 && isRunning)
         {
@@ -127,5 +146,10 @@ public class Pathfinder : MonoBehaviour
 
         }
         return false;
+    }
+
+    public void NotifyRecievers()
+    {
+        BroadcastMessage("RecalculatePath", false, SendMessageOptions.DontRequireReceiver);
     }
 }
