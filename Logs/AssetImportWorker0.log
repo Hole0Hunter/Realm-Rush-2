@@ -3030,3 +3030,127 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.040095 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+[ScriptCompilation] NOT recompiling all scripts because this is an import worker process. Reason to compile was: Define symbols changed
+Mono: successfully reloaded assembly
+- Completed reload, in  0.992 seconds
+Domain Reload Profiling:
+	ReloadAssembly (992ms)
+		BeginReloadAssembly (134ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (32ms)
+		EndReloadAssembly (784ms)
+			LoadAssemblies (109ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (276ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (277ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (70ms)
+				ProcessInitializeOnLoadAttributes (189ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (8ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.37 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1553 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 79.9 MB.
+System memory in use after: 78.0 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2111.
+Total: 2.729900 ms (FindLiveObjects: 0.176900 ms CreateObjectMapping: 0.055100 ms MarkObjects: 1.721700 ms  DeleteObjects: 0.775100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1687.608040 seconds.
+  path: Assets/PostProcessing
+  artifactKey: Guid(6a63af5e0ba87d3469533d335e1e114d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing using Guid(6a63af5e0ba87d3469533d335e1e114d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41daa7950511d44e9857e78d39cf6521') in 0.004844 seconds 
+  Import took 0.007392 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.181118 seconds.
+  path: Assets/PostProcessing/Global PP.asset
+  artifactKey: Guid(54491af85b36e0e4b9bb37d093873657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/Global PP.asset using Guid(54491af85b36e0e4b9bb37d093873657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4388a6414ccc65685f96ef68522e6820') in 0.011899 seconds 
+  Import took 0.014452 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 52.786201 seconds.
+  path: ProjectSettings/TagManager.asset
+  artifactKey: Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing ProjectSettings/TagManager.asset using Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b8a6504a0ff33516daabeca9d12f765') in 0.002791 seconds 
+  Import took 0.005503 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001797 seconds.
+  path: ProjectSettings/TagManager.asset
+  artifactKey: Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing ProjectSettings/TagManager.asset using Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b8a6504a0ff33516daabeca9d12f765') in 0.002507 seconds 
+  Import took 0.005350 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 69.401229 seconds.
+  path: Assets/PostProcessing/Global PP.asset
+  artifactKey: Guid(54491af85b36e0e4b9bb37d093873657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/Global PP.asset using Guid(54491af85b36e0e4b9bb37d093873657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '273005b7159a12f4305336a15cec7216') in 0.010586 seconds 
+  Import took 0.013910 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 100.906467 seconds.
+  path: Assets/PostProcessing/Global PP.asset
+  artifactKey: Guid(54491af85b36e0e4b9bb37d093873657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/Global PP.asset using Guid(54491af85b36e0e4b9bb37d093873657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '809921c0237f3057b38f5c70f5e63638') in 0.012557 seconds 
+  Import took 0.016022 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 140.711145 seconds.
+  path: Assets/PostProcessing/Global PP.asset
+  artifactKey: Guid(54491af85b36e0e4b9bb37d093873657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/Global PP.asset using Guid(54491af85b36e0e4b9bb37d093873657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '152702fd1afad57de935e4db5961714a') in 0.004811 seconds 
+  Import took 0.007574 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 749.776707 seconds.
+  path: Assets/PostProcessing/Global PP.asset
+  artifactKey: Guid(54491af85b36e0e4b9bb37d093873657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/Global PP.asset using Guid(54491af85b36e0e4b9bb37d093873657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '337efcaf0e7b6baa4ebb8d1f7b42beb3') in 0.003852 seconds 
+  Import took 0.006965 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
