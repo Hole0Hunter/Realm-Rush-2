@@ -8,18 +8,22 @@ using System;
 [ExecuteAlways] // This tag will make sure that the script is executed even in the Scene View.
 public class CoordinateLabler : MonoBehaviour
 {
-    [SerializeField] Color defaultColor = Color.white;
-    [SerializeField] Color blockedColor = Color.gray;
+    // Serializing these color variables is not updating all the tiles in the game for some reason
+    Color defaultColor = Color.white;
+    Color blockedColor = Color.gray;
+    Color exploredColor = Color.yellow;
+    Color pathColor = new Color(1f, 0.5f, 0f); // orange color
 
     TextMeshPro label;
     public Vector2Int coordinates = new Vector2Int();
-    Waypoint waypoint;
-    
+    GridManager gridManager;
     void Awake()
     {
+        gridManager = FindObjectOfType<GridManager>();
         label = this.GetComponent<TextMeshPro>();
-        waypoint = GetComponentInParent<Waypoint>();
-        label.enabled = true;
+        label.enabled = false;
+
+        DisplayCoordinates();
     }
 
     // Start is called before the first frame update
@@ -43,11 +47,12 @@ public class CoordinateLabler : MonoBehaviour
 
     void DisplayCoordinates()
     {
+        if (gridManager == null) { return; }
         /* Since the snapping is in the order of 10s, we need to divide
            the resultant coordinates by 10                              */
-        int snapping = Mathf.RoundToInt(UnityEditor.EditorSnapSettings.move.x);
-        coordinates.x = (Mathf.RoundToInt(transform.parent.position.x))/snapping;
-        coordinates.y = (Mathf.RoundToInt(transform.parent.position.z))/snapping;
+
+        coordinates.x = (Mathf.RoundToInt(transform.parent.position.x)) / gridManager.UnitySnapSettings;
+        coordinates.y = (Mathf.RoundToInt(transform.parent.position.z))/ gridManager.UnitySnapSettings;
 
         label.text = coordinates.ToString();
     }
@@ -59,13 +64,26 @@ public class CoordinateLabler : MonoBehaviour
 
     void SetLabelColor()
     {
-        if (waypoint.IsPlaceable)
+        if(gridManager == null) { return; }
+
+        Node node = gridManager.GetNode(coordinates);
+        if(node == null) { return; }
+
+        if (!node.isWalkable)
         {
-            label.color = defaultColor;
+            label.color = blockedColor; // gray
+        }
+        else if (node.isPath)
+        {
+            label.color = pathColor; // orange
+        }
+        else if (node.isExplored)
+        {
+            label.color = exploredColor; // yellow
         }
         else
         {
-            label.color = blockedColor;
+            label.color = defaultColor; // white
         }
     }
 

@@ -7,6 +7,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1708027412439933749, guid: 77ee74d689926d74799546496b4c51d6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708027412439933749, guid: 77ee74d689926d74799546496b4c51d6, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337500209602969927, guid: 77ee74d689926d74799546496b4c51d6, type: 3}
+      propertyPath: pathColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337500209602969927, guid: 77ee74d689926d74799546496b4c51d6, type: 3}
+      propertyPath: pathColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337500209602969927, guid: 77ee74d689926d74799546496b4c51d6, type: 3}
+      propertyPath: exploredColor.b
+      value: 0.015686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337500209602969927, guid: 77ee74d689926d74799546496b4c51d6, type: 3}
+      propertyPath: exploredColor.g
+      value: 0.92156863
+      objectReference: {fileID: 0}
     - target: {fileID: 3844882443238744904, guid: 77ee74d689926d74799546496b4c51d6, type: 3}
       propertyPath: m_RootOrder
       value: 0

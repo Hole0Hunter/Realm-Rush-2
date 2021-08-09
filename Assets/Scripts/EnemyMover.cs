@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] List<Waypoint> path = new List<Waypoint>();
+    [SerializeField] List<Tile> path = new List<Tile>();
     [SerializeField] [Range(0f, 5f)]float speed = 1f;
 
     Enemy enemy;
@@ -21,7 +21,7 @@ public class EnemyMover : MonoBehaviour
         FindPath();
 
         this.transform.position = path[0].transform.position; // returns to starting position
-        StartCoroutine(PrintWaypointsList());
+        StartCoroutine(PrintTilessList());
     }
 
     void FindPath()
@@ -31,11 +31,11 @@ public class EnemyMover : MonoBehaviour
         
         foreach(Transform child in parent.GetComponentsInChildren<Transform>())
         {
-            Waypoint waypoint = child.GetComponent<Waypoint>();
+            Tile tile = child.GetComponent<Tile>();
 
-            if(waypoint != null)
+            if(tile != null)
             {
-                path.Add(waypoint);
+                path.Add(tile);
             }
         }
     }
@@ -45,12 +45,12 @@ public class EnemyMover : MonoBehaviour
         
     }
 
-    IEnumerator PrintWaypointsList()
+    IEnumerator PrintTilessList()
     {
-        foreach(Waypoint waypoint in path)
+        foreach(Tile tile in path)
         {
             Vector3 startPos = this.transform.position;
-            Vector3 endPos = waypoint.transform.position;
+            Vector3 endPos = tile.transform.position;
             float travelPercent = 0f;
 
             transform.LookAt(endPos); // for the enemy to look towards his end position;
